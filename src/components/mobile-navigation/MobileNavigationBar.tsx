@@ -1,6 +1,6 @@
 'use client';
 
-import { Home, ShoppingCart, User, Search, Heart, Grid3X3 } from 'lucide-react';
+import { Home, ShoppingCart, Search, Heart, Grid3X3 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
@@ -15,6 +15,7 @@ const navItems = [
 
 const MobileNavigationBar = () => {
   const pathname = usePathname();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeTab, setActiveTab] = useState(pathname);
 
   return (
