@@ -1,74 +1,128 @@
 'use client';
 
-import Image from 'next/image';
+import React, { useState, useEffect } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import CarouselCard1 from '../carousel-cards/CarouselCard1';
 
 const Section2 = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const slides = [
+    {
+      title: "...",
+      subtitle: "...",
+      description: "...",
+      image: "https://images.pexels.com/photos/1082529/pexels-photo-103833peg?auto=compress&cs=tinysrgb&w=1200&h=600",
+      buttonText: "تسوق الآن"
+    },
+    {
+      title: "...",
+      subtitle: "...",
+      description: "...",
+      
+      buttonText: "اكتشف المجموعة"
+    },
+    {
+      title: "...",
+      subtitle: "...",
+      description: "...",
+   
+      buttonText: "اطلع على العروض"
+    }
+  ];
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, slides.length]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setIsAutoPlaying(false);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setIsAutoPlaying(false);
+  };
+
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index);
+    setIsAutoPlaying(false);
+  };
+
   return (
-    <section className="flex flex-col justify-center items-center min-h-screen bg-transparent px-4">
-      {/* بطاقة المنتج */}
-      <div className="relative max-w-xs w-full rounded-2xl backdrop-blur-lg border border-white/10 shadow-xl pt-20 pb-6 px-6 text-center">
-        {/* صورة المنتج تطفو فوق البطاقة */}
-        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2">
-          <Image
-            src="/product.webp"
-            alt="منتج"
-            width={120}
-            height={120}
-            className="object-contain drop-shadow-xl rounded-xl"
-          />
-        </div>
+    <section className="relative bg-gradient-to-b from-gray-50 to-white pt-32 pb-16">
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Hero Carousel */}
+       <div className="relative overflow-hidden rounded-3xl shadow-2xl h-screen md:h-[600px]">
 
-        {/* اسم المنتج */}
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white mt-2">اسم المنتج</h2>
-
-        {/* السعر */}
-        <div className="flex justify-center items-center gap-2 mt-1 text-sm">
-          <span className="line-through text-gray-400">$99</span>
-          <span className="text-red-500 font-bold">$69</span>
-        </div>
-
-        {/* الألوان */}
-        <div className="flex justify-center gap-2 mt-3">
-          <span className="w-4 h-4 rounded-full bg-red-500 border border-white/20"></span>
-          <span className="w-4 h-4 rounded-full bg-blue-500 border border-white/20"></span>
-          <span className="w-4 h-4 rounded-full bg-green-500 border border-white/20"></span>
-        </div>
-
-        {/* زر الإضافة إلى السلة */}
-        <button className="mt-5 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition">
-          أضف إلى السلة
-        </button>
-      </div>
-
-
-      {/* قسم المميزات */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl w-full px-4">
-        {[
-          {
-            icon: "🚚",
-            title: "شحن مجاني",
-            description: "للطلبات أكثر من 200 ريال"
-          },
-          {
-            icon: "🔒",
-            title: "دفع آمن",
-            description: "حماية كاملة لبياناتك"
-          },
-          {
-            icon: "↩️",
-            title: "إرجاع مجاني",
-            description: "خلال 30 يوم من الشراء"
-          }
-        ].map((feature, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 text-center"
+          {/* Slides Container */}
+          <div 
+            className="flex transition-transform duration-700 ease-in-out"
+            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
           >
-            <div className="text-4xl mb-4">{feature.icon}</div>
-            <h3 className="text-xl font-bold text-gray-900 mb-2">{feature.title}</h3>
-            <p className="text-gray-600">{feature.description}</p>
+            {slides.map((slide, index) => (
+              <div key={index} className="w-full flex-shrink-0">
+                <CarouselCard1
+                  title={slide.title}
+                  subtitle={slide.subtitle}
+                  description={slide.description}
+                  image={slide.image}
+                  buttonText={slide.buttonText}
+                  index={index}
+                />
+              </div>
+            ))}
           </div>
-        ))}
+
+          {/* Navigation Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 group"
+          >
+            <ChevronRight className="w-6 h-6 group-hover:scale-110 transition-transform" />
+          </button>
+          
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 group"
+          >
+            <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 rtl:space-x-reverse">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentSlide
+                    ? 'bg-white scale-125'
+                    : 'bg-white/50 hover:bg-white/75'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Progress Bar */}
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
+            <div 
+              className="h-full bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300"
+              style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
+            />
+          </div>
+        </div>
+
+       
       </div>
     </section>
   );
