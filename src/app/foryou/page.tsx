@@ -91,20 +91,17 @@ export default function ForYouPage() {
   ];
 
  return (
-  <div className="relative h-screen overflow-hidden flex flex-col">
+  <div className="relative h-screen overflow-hidden">
 
-    {/* فيديوهات مع خاصية التمرير */}
-    <div className="flex-1 overflow-y-scroll snap-y snap-mandatory">
+    <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
       {videoList.map((video) => (
         <VideoItem key={video.id} video={video} />
       ))}
     </div>
 
-    {/* Spacer بحجم شريط التنقل للحفاظ على عرض الفيديو كامل */}
-    <div className="h-20 md:hidden" />
-
-    {/* شريط التنقل (ثابت أسفل الشاشة) */}
-    <MobileNavigationBar />
+    <div className="absolute bottom-0 w-full z-30">
+      <MobileNavigationBar />
+    </div>
   </div>
 );
 
