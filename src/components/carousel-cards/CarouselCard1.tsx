@@ -16,7 +16,7 @@ const CarouselCard1: React.FC<CarouselCardProps> = ({
 
   const handleClick = () => {
     // هنا يمكنك تنفيذ الإجراء عند النقر على الصورة، مثل التنقل أو فتح رابط
-    window.location.href = "/shop"; // قم بتغيير الرابط حسب ما تحتاج
+    window.location.href = "/"; // قم بتغيير الرابط حسب ما تحتاج
   };
 
   return (
