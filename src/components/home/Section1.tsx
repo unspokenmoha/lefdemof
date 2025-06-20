@@ -11,7 +11,7 @@ interface Story {
 const stories: Story[] = [
   {
     id: 1,
-    imageUrl: 'https://picsum.photos/id/1011/400/700',
+    imageUrl: 'https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000055.jpg?v=1742074709',
     userName: 'story1',
   },
   {
@@ -42,7 +42,7 @@ const Section1 = () => {
   return (
     <>
       {/* ستوري دوائر */}
-      <section className="flex space-x-4 overflow-x-auto py-4 px-4 bg-white border-b border-gray-200 mt-15">
+      <section className="flex space-x-4 overflow-x-auto pb-1 px-4 bg-white border-b border-gray-200 mt-15">
         {stories.map((story) => (
           <button
             key={story.id}
