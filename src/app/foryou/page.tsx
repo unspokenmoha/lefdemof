@@ -30,46 +30,50 @@ const VideoItem = ({ video }: { video: { videoUrl: string; title: string } }) =>
   return (
     <div
       ref={ref}
-      className="relative h-[calc(100vh-env(safe-area-inset-bottom)-72px)] w-full snap-start overflow-hidden bg-black"
+      className="h-screen w-full snap-start overflow-hidden bg-black"
     >
-      {shouldLoad && (
-        <video
-          ref={videoRef}
-          src={video.videoUrl}
-          muted
-          loop
-          playsInline
-          onWaiting={() => setIsLoading(true)}
-          onCanPlay={() => setIsLoading(false)}
-          className="h-full w-full object-cover"
-        />
-      )}
+      {/* الفيديو داخل مساحة تقل قليلاً عن الشاشة لتفادي MobileNavigationBar */}
+      <div className="relative h-[calc(100vh-env(safe-area-inset-bottom)-72px)] w-full overflow-hidden">
+        {shouldLoad && (
+          <video
+            ref={videoRef}
+            src={video.videoUrl}
+            muted
+            loop
+            playsInline
+            onWaiting={() => setIsLoading(true)}
+            onCanPlay={() => setIsLoading(false)}
+            className="h-full w-full object-cover"
+          />
+        )}
 
-      {isLoading && shouldLoad && (
-        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40">
-          <div className="h-10 w-10 animate-spin rounded-full border-4 border-white border-t-transparent"></div>
+        {isLoading && shouldLoad && (
+          <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40">
+            <div className="h-10 w-10 animate-spin rounded-full border-4 border-white border-t-transparent"></div>
+          </div>
+        )}
+
+        <div className="absolute bottom-20 left-4 z-10 text-white w-3/4">
+          <h2 className="text-lg font-semibold">{video.title}</h2>
+          <p className="text-sm opacity-70">وصف للمنتج أو الفيديو</p>
         </div>
-      )}
 
-      <div className="absolute bottom-20 left-4 z-10 text-white w-3/4">
-        <h2 className="text-lg font-semibold">{video.title}</h2>
-        <p className="text-sm opacity-70">وصف للمنتج أو الفيديو</p>
-      </div>
-
-      <div className="absolute bottom-24 right-4 z-10 flex flex-col items-center gap-5">
-        <button className="text-white">
-          <Heart size={28} />
-        </button>
-        <button className="text-white">
-          <MessageCircle size={28} />
-        </button>
-        <button className="text-white">
-          <Share2 size={28} />
-        </button>
+        <div className="absolute bottom-24 right-4 z-10 flex flex-col items-center gap-5">
+          <button className="text-white">
+            <Heart size={28} />
+          </button>
+          <button className="text-white">
+            <MessageCircle size={28} />
+          </button>
+          <button className="text-white">
+            <Share2 size={28} />
+          </button>
+        </div>
       </div>
     </div>
   );
 };
+
 
 export default function ForYouPage() {
   const videoList = [
