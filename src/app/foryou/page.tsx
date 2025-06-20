@@ -30,7 +30,7 @@ const VideoItem = ({ video }: { video: { videoUrl: string; title: string } }) =>
   return (
     <div
       ref={ref}
-      className="relative h-screen w-full snap-start overflow-hidden bg-black"
+      className="relative h-[calc(100vh-env(safe-area-inset-bottom)-72px)] w-full snap-start overflow-hidden bg-black"
     >
       {shouldLoad && (
         <video
@@ -90,19 +90,17 @@ export default function ForYouPage() {
     },
   ];
 
- return (
-  <div className="relative h-screen overflow-hidden">
+  return (
+    <div className="relative h-screen overflow-hidden">
+      <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
+        {videoList.map((video) => (
+          <VideoItem key={video.id} video={video} />
+        ))}
+      </div>
 
-    <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
-      {videoList.map((video) => (
-        <VideoItem key={video.id} video={video} />
-      ))}
+      <div className="absolute bottom-0 w-full z-30">
+        <MobileNavigationBar />
+      </div>
     </div>
-
-    <div className="absolute bottom-0 w-full z-30">
-      <MobileNavigationBar />
-    </div>
-  </div>
-);
-
+  );
 }
