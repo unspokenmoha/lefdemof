@@ -49,9 +49,9 @@ const Section2 = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 md:pt-32 pb-16">
+    <section className="relative bg-gradient-to-b from-gray-50 to-white pt-[5px] pb-16">
  <div className="max-w-7xl mx-auto px-4">
-        <div className="relative overflow-hidden rounded-3xl shadow-2xl h-[350px] md:h-[600px]">
+        <div className="relative overflow-hidden rounded-3xl shadow-2xl aspect-[1/2] w-full md:h-[600px]">
 
         <div 
             className="flex transition-transform duration-700 ease-in-out"
