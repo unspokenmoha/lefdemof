@@ -13,7 +13,7 @@ const Section2 = () => {
       title: "...",
       subtitle: "...",
       description: "...",
-      image: "https://images.pexels.com/photos/1082529/pexels-photo-103833peg?auto=compress&cs=tinysrgb&w=1200&h=600",
+      image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000022.jpg?v=1742074739",
       buttonText: "تسوق الآن"
     },
     {
