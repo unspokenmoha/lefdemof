@@ -42,8 +42,8 @@ const Section1 = () => {
   return (
     <>
       {/* ستوري دوائر */}
-      <section className="flex space-x-4 overflow-x-auto pb-1 px-4 bg-white border-b border-gray-200 mt-15">
-        {stories.map((story) => (
+      <section className="flex space-x-4 overflow-x-auto px-4 pt-2 pb-1 bg-white border-b border-gray-200">
+  {stories.map((story) => (
           <button
             key={story.id}
             onClick={() => setActiveStory(story)}
