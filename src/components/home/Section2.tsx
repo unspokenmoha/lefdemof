@@ -10,29 +10,19 @@ const Section2 = () => {
 
   const slides = [
     {
-      title: "...",
-      subtitle: "...",
-      description: "...",
       image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000022.jpg?v=1742074739",
-      buttonText: "تسوق الآن"
+      link: "/shop"  // يمكن تغييره لكل شريحة حسب الحاجة
     },
     {
-      title: "...",
-      subtitle: "...",
-      description: "...",
-      
-      buttonText: "اكتشف المجموعة"
+      image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000023.jpg?v=1742074740",
+      link: "/collection"
     },
     {
-      title: "...",
-      subtitle: "...",
-      description: "...",
-   
-      buttonText: "اطلع على العروض"
+      image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000024.jpg?v=1742074741",
+      link: "/offers"
     }
   ];
 
-  // Auto-play functionality
   useEffect(() => {
     if (!isAutoPlaying) return;
     
@@ -61,10 +51,7 @@ const Section2 = () => {
   return (
     <section className="relative bg-gradient-to-b from-gray-50 to-white pt-32 pb-16">
       <div className="max-w-7xl mx-auto px-4">
-        {/* Hero Carousel */}
-       <div className="relative overflow-hidden rounded-3xl shadow-2xl h-screen md:h-[600px]">
-
-          {/* Slides Container */}
+        <div className="relative overflow-hidden rounded-3xl shadow-2xl h-screen md:h-[600px]">
           <div 
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
@@ -72,18 +59,15 @@ const Section2 = () => {
             {slides.map((slide, index) => (
               <div key={index} className="w-full flex-shrink-0">
                 <CarouselCard1
-                  title={slide.title}
-                  subtitle={slide.subtitle}
-                  description={slide.description}
                   image={slide.image}
-                  buttonText={slide.buttonText}
                   index={index}
+                  // لو أضفت دعم لـ link في CarouselCard1 يمكن تمريره هنا
                 />
               </div>
             ))}
           </div>
 
-          {/* Navigation Arrows */}
+          {/* أزرار التنقل */}
           <button
             onClick={prevSlide}
             className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-sm hover:bg-white/30 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 group"
@@ -98,7 +82,7 @@ const Section2 = () => {
             <ChevronLeft className="w-6 h-6 group-hover:scale-110 transition-transform" />
           </button>
 
-          {/* Dots Indicator */}
+          {/* نقاط المؤشر */}
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-2 rtl:space-x-reverse">
             {slides.map((_, index) => (
               <button
@@ -113,7 +97,7 @@ const Section2 = () => {
             ))}
           </div>
 
-          {/* Progress Bar */}
+          {/* شريط التقدم */}
           <div className="absolute bottom-0 left-0 right-0 h-1 bg-white/20">
             <div 
               className="h-full bg-gradient-to-r from-blue-400 to-purple-400 transition-all duration-300"
@@ -121,11 +105,10 @@ const Section2 = () => {
             />
           </div>
         </div>
-
-       
       </div>
     </section>
   );
 };
 
 export default Section2;
+
