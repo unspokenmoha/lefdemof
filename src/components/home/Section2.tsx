@@ -11,15 +11,15 @@ const Section2 = () => {
   const slides = [
     {
       image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000022.jpg?v=1742074739",
-      link: "/shop"  // يمكن تغييره لكل شريحة حسب الحاجة
+      link: "/"  // يمكن تغييره لكل شريحة حسب الحاجة
     },
     {
       image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/0000444.jpg?v=1742074686",
-      link: "/collection"
+      link: "/"
     },
     {
       image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000011.jpg?v=1742074768",
-      link: "/offers"
+      link: "/"
     }
   ];
 
@@ -49,10 +49,10 @@ const Section2 = () => {
   };
 
   return (
-    <section className="relative bg-gradient-to-b from-gray-50 to-white pt-[5px] pb-16">
+    <section className="relative bg-gradient-to-b from-gray-50 to-white pb-16">
  <div className="max-w-7xl mx-auto px-4">
-        <div className="relative overflow-hidden rounded-3xl shadow-2xl aspect-[1/2] w-full md:h-[600px]">
-
+        <div className="relative overflow-hidden rounded-3xl shadow-2xl aspect-[3/4] w-full md:h-[600px]">
+    
         <div 
             className="flex transition-transform duration-700 ease-in-out"
             style={{ transform: `translateX(-${currentSlide * 100}%)` }}
