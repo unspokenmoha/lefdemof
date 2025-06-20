@@ -14,11 +14,11 @@ const Section2 = () => {
       link: "/shop"  // يمكن تغييره لكل شريحة حسب الحاجة
     },
     {
-      image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000023.jpg?v=1742074740",
+      image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/0000444.jpg?v=1742074686",
       link: "/collection"
     },
     {
-      image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000024.jpg?v=1742074741",
+      image: "https://cdn.shopify.com/s/files/1/0267/2587/5903/files/000011.jpg?v=1742074768",
       link: "/offers"
     }
   ];
