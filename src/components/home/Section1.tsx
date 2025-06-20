@@ -72,12 +72,13 @@ const Section1 = () => {
             className="relative max-w-md max-h-[90vh] w-full rounded-lg overflow-hidden"
           >
             <button
-              onClick={() => setActiveStory(null)}
-              className="absolute top-2 right-2 text-white text-3xl font-bold z-50"
-              aria-label="Close story"
-            >
-              &times;
-            </button>
+  onClick={() => setActiveStory(null)}
+  className="absolute top-2 right-2 w-10 h-10 bg-black/50 text-white rounded-full flex items-center justify-center text-2xl z-50 hover:bg-black/70 transition"
+  aria-label="Close story"
+>
+  &times;
+</button>
+
             <img
               src={activeStory.imageUrl}
               alt={`${activeStory.userName} story large`}
