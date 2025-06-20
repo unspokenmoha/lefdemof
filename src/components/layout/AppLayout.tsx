@@ -34,13 +34,18 @@ const AppLayout: React.FC<Props> = ({
 
       {!hideLayout && <Header />}
 
-      <main className="min-h-screen bg-[rgb(248,249,250)]">
-        {navbar ? (
-          <div className="pt-32">{navbar}</div>
-        ) : (
-          <div>{children}</div>
-        )}
-      </main>
+      <main
+  className={`min-h-screen bg-[rgb(248,249,250)] ${
+    pathname === '/foryou' ? 'pb-20' : ''
+  }`}
+>
+  {navbar ? (
+    <div className="pt-32">{navbar}</div>
+  ) : (
+    <div>{children}</div>
+  )}
+</main>
+
 
       {!hideLayout && <MobileNavigationBar />}
 
